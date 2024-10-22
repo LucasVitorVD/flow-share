@@ -1,0 +1,47 @@
+<p-menubar [model]="items" styleClass="rounded-none px-6 gap-3">
+  <ng-template pTemplate="start">
+    <a class="font-bold text-xl transition-all hover:text-black" href="/">
+      FlowShare
+    </a>
+  </ng-template>
+  <ng-template pTemplate="item" let-item>
+    <ng-container *ngIf="item.route; else urlRef">
+      <a
+        [routerLink]="item.route"
+        class="p-menuitem-link transition-all hover:text-primary"
+      >
+        <span [class]="item.icon"></span>
+        <span class="ml-2">{{ item.label }}</span>
+      </a>
+    </ng-container>
+    <ng-template #urlRef>
+      <a
+        *ngIf="item.url; else noLink"
+        [href]="item.url"
+        class="p-menuitem-link transition-all hover:text-black"
+      >
+        <span [class]="item.icon"></span>
+        <span class="ml-2">{{ item.label }}</span>
+      </a>
+    </ng-template>
+    <ng-template #noLink>
+      <div class="p-menuitem-link">
+        <span [class]="item.icon"></span>
+        <span class="ml-2">{{ item.label }}</span>
+        <span class="pi pi-fw pi-angle-down ml-2"></span>
+      </div>
+    </ng-template>
+  </ng-template>
+  <ng-template pTemplate="end">
+    @if (isLogin) {
+      <app-profile></app-profile>
+    } @else {
+      <a class="flex items-center gap-3 font-bold transition-all hover:text-black" href="/">
+        <div>
+          <span class="pi pi-sign-in" style="font-size: 1rem"></span>
+        </div>
+        Login
+      </a>
+    }
+  </ng-template>
+</p-menubar>

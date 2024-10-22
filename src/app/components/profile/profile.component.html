@@ -1,0 +1,7 @@
+<p-menu #menu [model]="profileItems" [popup]="true" />
+<p-avatar
+  image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+  shape="circle"
+  class="cursor-pointer"
+  (click)="menu.toggle($event)"
+/>

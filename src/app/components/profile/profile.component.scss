@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+.logout-menu-item div a span {
+  @apply transition-all text-red-400 hover:underline hover:text-red-500;
+}
